@@ -1,0 +1,23 @@
+{
+  "name": "mytineraryserver",
+  "version": "1.0.0",
+  "description": "Node Server App",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "author": "Kevin T",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongodb": "^3.3.3",
+    "mongoose": "^5.7.7"
+  },
+  "proxy": "http://localhost:5000/",
+  "devDependencies": {
+    "nodemon": "^1.19.4"
+  }
+}
