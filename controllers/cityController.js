@@ -23,7 +23,7 @@ const cityController = {
 
         res.json({"response": "SAVED"});
     },
-    findCityByCityId: (req, res) => {
+    findCityByCityId: async (req, res) => {
 	var cityId = req.body.cityId;
 	await City.find({_id: cityId})
 	.catch(error => res.json(error));
