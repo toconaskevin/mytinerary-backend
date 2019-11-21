@@ -13,19 +13,26 @@ const itineraryController = {
         var duration = req.body.duration;
         var cost = req.body.cost;
         var hashtag = req.body.hashtag;
+	var cityId = req.body.cityId;
 
         const newItinerary = new Itinerary({
           author: author,
           rating: rating,
           duration: duration,
           cost: cost,
-          hashtag: hashtag
+          hashtag: hashtag,
+	  cityId: cityId
         });
     
         await newItinerary.save()
         .catch(error => res.json(error));
 
         res.json({"response": "SAVED"});
+    },
+    findItinerariesByCityId: async (req, res) => {
+	var cityId = req.params.cityId;
+	await City.find({_id: cityId})
+	.catch(error => res.json(error));
     },
     deleteItinerary: async (req, res) => {
         var id = req.params.id;
@@ -41,6 +48,7 @@ const itineraryController = {
         var duration = req.body.duration;
         var cost = req.body.cost;
         var hashtag = req.body.hashtag;
+	var cityId = req.body.cityId;
 
         await Itinerary.findOneAndUpdate(
             {_id: id},
@@ -49,7 +57,8 @@ const itineraryController = {
               rating: rating,
               duration: duration,
               cost: cost,
-              hashtag: hashtag
+              hashtag: hashtag,
+	      cityId: cityId
             })
         .catch(error => res.json(error));
         

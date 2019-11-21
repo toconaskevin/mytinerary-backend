@@ -23,6 +23,11 @@ const cityController = {
 
         res.json({"response": "SAVED"});
     },
+    findCityByCityId: (req, res) => {
+	var cityId = req.body.cityId;
+	await City.find({_id: cityId})
+	.catch(error => res.json(error));
+    },
     deleteCity: async (req, res) => {
         var id = req.params.id;
         await City.findOneAndDelete({_id: id})
