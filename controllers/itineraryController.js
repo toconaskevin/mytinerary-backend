@@ -30,9 +30,11 @@ const itineraryController = {
         res.json({"response": "SAVED"});
     },
     findItinerariesByCityId: async (req, res) => {
-	var cityId = req.params.cityId;
-	await City.find({_id: cityId})
-	.catch(error => res.json(error));
+        var cityId = req.params.cityId;
+        const itineraries = await Itinerary.find({cityId: cityId})
+        .catch(error => res.json(error));
+
+        res.json({"itineraries": itineraries})
     },
     deleteItinerary: async (req, res) => {
         var id = req.params.id;
