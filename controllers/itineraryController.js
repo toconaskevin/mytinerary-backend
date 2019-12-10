@@ -12,16 +12,16 @@ const itineraryController = {
         var rating = req.body.rating;
         var duration = req.body.duration;
         var cost = req.body.cost;
-        var hashtag = req.body.hashtag;
-	var cityId = req.body.cityId;
+        var hashtags = req.body.hashtags;
+	    var cityId = req.body.cityId;
 
         const newItinerary = new Itinerary({
           author: author,
           rating: rating,
           duration: duration,
           cost: cost,
-          hashtag: hashtag,
-	  cityId: cityId
+          hashtags: hashtags,
+	      cityId: cityId
         });
     
         await newItinerary.save()
@@ -49,8 +49,8 @@ const itineraryController = {
         var rating = req.body.rating;
         var duration = req.body.duration;
         var cost = req.body.cost;
-        var hashtag = req.body.hashtag;
-	var cityId = req.body.cityId;
+        var hashtags = req.body.hashtags;
+	    var cityId = req.body.cityId;
 
         await Itinerary.findOneAndUpdate(
             {_id: id},
@@ -59,8 +59,8 @@ const itineraryController = {
               rating: rating,
               duration: duration,
               cost: cost,
-              hashtag: hashtag,
-	      cityId: cityId
+              hashtags: hashtags,
+	          cityId: cityId
             })
         .catch(error => res.json(error));
         
